@@ -1,0 +1,1 @@
+ALTER TABLE paciente ALTER COLUMN ativo SET DEFAULT true;
