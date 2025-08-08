@@ -17,7 +17,7 @@ import med.voll.api.endereco.DadosEndereco;
 @EqualsAndHashCode(of = "id")
 public class Paciente {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
@@ -40,13 +40,13 @@ public class Paciente {
     }
 
     public void atualizarInformacoes(@Valid DadosAtualizacaoPaciente dadosAtualizacaoPaciente) {
-        if (dadosAtualizacaoPaciente.nome() != null){
+        if (dadosAtualizacaoPaciente.nome() != null) {
             this.nome = dadosAtualizacaoPaciente.nome();
         }
-        if (dadosAtualizacaoPaciente.telefone() != null){
+        if (dadosAtualizacaoPaciente.telefone() != null) {
             this.telefone = dadosAtualizacaoPaciente.telefone();
         }
-        if (dadosAtualizacaoPaciente.email() != null){
+        if (dadosAtualizacaoPaciente.email() != null) {
             this.email = dadosAtualizacaoPaciente.email();
         }
     }
