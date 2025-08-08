@@ -25,6 +25,7 @@ public class MedicoController {
         repository.save(medico);
         var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(medico.getId()).toUri();
         return ResponseEntity.created(uri).body(new DadosDetalhamentoMedico(medico));
+        //implementando ResponseEntity. TEM QUE IMPLEMENTAR EM TODOS. RETORNO HTTP
     }
 
     @GetMapping
