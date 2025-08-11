@@ -31,7 +31,7 @@ public class Medico {
     private Endereco endereco;
 
     @NotNull
-    private Boolean ativo = true;
+    private boolean ativo = true;
 
     public Medico(DadosCadastroMedico dados) {
         this.ativo = true;
