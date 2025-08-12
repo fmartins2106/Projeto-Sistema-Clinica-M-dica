@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import med.voll.api.domain.consulta.AgendaDeConsultas;
 import med.voll.api.domain.consulta.DadosAgendamentoConsulta;
 import med.voll.api.domain.consulta.DadosCancelamentoConsulta;
+import med.voll.api.domain.consulta.MotivoCancelamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,4 +30,13 @@ public class ConsultaController {
         agendaDeConsultas.cancelarConsulta(dadosCancelamentoConsulta);
         return ResponseEntity.noContent().build();
     }
+
+//    @DeleteMapping("/{id}")
+//    @Transactional
+//    public ResponseEntity cancelar(@PathVariable Long id) {
+//        agendaDeConsultas.cancelarConsulta(new DadosCancelamentoConsulta(id, MotivoCancelamento.OUTROS)); // Motivo padrão ou outro
+//        return ResponseEntity.noContent().build();
+//    }
+
+
 }
