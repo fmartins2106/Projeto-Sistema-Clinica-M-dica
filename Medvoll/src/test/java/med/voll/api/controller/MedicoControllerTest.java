@@ -59,8 +59,9 @@ class MedicoControllerTest {
         var dadosCadastro = new DadosCadastroMedico(
                 "Medico",
                 "medico@voll.med",
+                "6177999",
                 "223456",
-                "6199909",
+
                 Especialidade.CARDIOLOGIA,
                 dadosEndereco());
 
@@ -76,8 +77,8 @@ class MedicoControllerTest {
                 null,
                 dadosCadastro.nome(),
                 dadosCadastro.email(),
-                dadosCadastro.crm(),
                 dadosCadastro.telefone(),
+                dadosCadastro.crm(),
                 dadosCadastro.especialidade(),
                 new Endereco(dadosCadastro.endereco())
         );
