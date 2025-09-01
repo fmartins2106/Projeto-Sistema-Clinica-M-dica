@@ -9,6 +9,9 @@ public record DadosEndereco(
         String logradouro,
 
         @NotBlank
+        String endereco,
+
+        @NotBlank
         String bairro,
 
         @NotBlank

@@ -18,16 +18,23 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class PacienteController {
 
     @Autowired
-    private PacienteRepository pacienteRepository;
+    private PacienteRepository pacienteRepository; // Injeta o repositório para acessar o banco
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroPaciente dadosCadastroPaciente, UriComponentsBuilder uriComponentsBuilder) {
-        var paciente = new Paciente(dadosCadastroPaciente);
-        pacienteRepository.save(paciente);
-        var uri = uriComponentsBuilder.path("/pacientes/{id}").buildAndExpand(paciente.getId()).toUri();
-        return ResponseEntity.created(uri).body(new DadosDetalhamentoPaciente(paciente));
+    @PostMapping //“Esse metodo vai responder a requisições HTTP POST nesse endpoint”.
+    @Transactional // Garante transação no banco
+    public ResponseEntity cadastrar(
+            @RequestBody @Valid DadosCadastroPaciente dadosCadastroPaciente, // Recebe JSON validado
+            UriComponentsBuilder uriComponentsBuilder) {
+
+        var paciente = new Paciente(dadosCadastroPaciente); // Converte DTO em entidade
+        pacienteRepository.save(paciente); // Salva no banco
+
+        var uri = uriComponentsBuilder.path("/pacientes/{id}") // Monta URI do novo paciente
+                .buildAndExpand(paciente.getId()).toUri();
+        return ResponseEntity.created(uri) // Retorna 201 Created com Location
+                .body(new DadosDetalhamentoPaciente(paciente)); // Corpo com dados do paciente
     }
+
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemPaciente>> listagemPacientes(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {

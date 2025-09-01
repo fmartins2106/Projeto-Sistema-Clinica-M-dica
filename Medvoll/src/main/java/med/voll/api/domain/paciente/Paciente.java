@@ -21,8 +21,8 @@ public class Paciente {
     private Long id;
     private String nome;
     private String email;
-    private String telefone;
     private String cpf;
+    private String telefone;
 
     @Embedded
     private DadosEndereco endereco;

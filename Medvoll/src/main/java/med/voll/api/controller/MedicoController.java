@@ -56,7 +56,6 @@ public class MedicoController {
     public ResponseEntity excluir(@PathVariable Long id) {
         var medico = repository.getReferenceById(id);
         medico.excluir();
-
         return ResponseEntity.noContent().build();
     }
 

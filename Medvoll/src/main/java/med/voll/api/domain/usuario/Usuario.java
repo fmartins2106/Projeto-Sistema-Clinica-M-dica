@@ -27,37 +27,38 @@ public class Usuario implements UserDetails {
     private String senha;
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    public Collection<? extends GrantedAuthority> getAuthorities() { // Retorna as permissões do usuário
+        return List.of(new SimpleGrantedAuthority("ROLE_USER"));    // Define que o usuário tem papel "ROLE_USER"
     }
 
     @Override
-    public String getPassword() {
+    public String getPassword() { // Retorna a senha do usuário
         return senha;
     }
 
     @Override
-    public String getUsername() {
+    public String getUsername() { // Retorna o login do usuário
         return login;
     }
 
     @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public boolean isAccountNonExpired() { // Verifica se a conta não expirou
+        return true;                       // Sempre válida
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
+    public boolean isAccountNonLocked() { // Verifica se a conta não está bloqueada
+        return true;                      // Sempre desbloqueada
     }
 
     @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
+    public boolean isCredentialsNonExpired() { // Verifica se as credenciais (senha) não expiraram
+        return true;                           // Sempre válidas
     }
 
     @Override
-    public boolean isEnabled() {
-        return true;
+    public boolean isEnabled() { // Verifica se o usuário está habilitado
+        return true;             // Sempre ativo
     }
+
 }
