@@ -18,16 +18,23 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(of = "id")
 public class Consulta {
 
-    @Id
+    @Id  // Indica que este campo é a chave primária da tabela (Primary Key).
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // Diz que o banco vai gerar o valor automaticamente (auto incremento)
+    // quando um novo registro for inserido.
     private Long id;
 
+    // Define um relacionamento Muitos-para-Um (muitas consultas podem ter um mesmo médico).
+    // O 'fetch = LAZY' significa que o médico só será carregado do banco
+    // quando for acessado explicitamente (economiza performance).
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "medico.id")
+    // Coluna no banco que será a chave estrangeira (FK) para o medico
+    @JoinColumn(name = "idmedico")
     private Medico medico;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "paciente_id")
+    // Coluna no banco que será a chave estrangeira (FK) para o paciente.
+    @JoinColumn(name = "idpaciente")
     private Paciente paciente;
 
     private LocalDateTime data;
@@ -39,5 +46,27 @@ public class Consulta {
     public void cancelar(MotivoCancelamento motivoCancelamento) {
         this.motivoCancelamento = motivoCancelamento;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
